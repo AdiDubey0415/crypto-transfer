@@ -7,6 +7,7 @@ const message = "Verify me!";
 const messageHash = keccak256(utf8ToBytes(message));
 // console.log("message:", message, messageHash);
 
+// secp.secp256k1.utils.randomPrivateKey() already gives a Uint8Array, but a message like "Verify me!" is a string, so we need to convert it to a Uint8Array first, post which we can hash it.
 const privateKey = secp.secp256k1.utils.randomPrivateKey();
 const publicKey = secp.secp256k1.getPublicKey(privateKey);
 const privateKeyHex = toHex(privateKey);
@@ -21,6 +22,8 @@ const isVerified = secp.secp256k1.verify(signature, messageHash, publicKey);
 //   signature
 // );
 
-console.log("private key:", privateKeyHex);
+console.log("private key:", privateKey, privateKeyHex);
 
 console.log("public key:", publicKeyHex);
+
+console.log("signature:", signature);

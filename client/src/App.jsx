@@ -2,12 +2,12 @@ import Wallet from "./Wallet";
 import Transfer from "./Transfer";
 import "./App.scss";
 import { useState } from "react";
-import { getRandomBytesSync } from "ethereum-cryptography/random.js";
-console.log(getRandomBytesSync(32));
 
 function App() {
   const [balance, setBalance] = useState(0);
   const [address, setAddress] = useState("");
+  const [privateKey, setPrivateKey] = useState("");
+  const [signature, setSignature] = useState("");
 
   return (
     <div className="app">
@@ -16,8 +16,12 @@ function App() {
         setBalance={setBalance}
         address={address}
         setAddress={setAddress}
+        privateKey={privateKey}
+        setPrivateKey={setPrivateKey}
+        signature={signature}
+        setSignature={setSignature}
       />
-      <Transfer setBalance={setBalance} address={address} />
+      <Transfer setBalance={setBalance} address={address} signature={signature} setSignature={setSignature} privateKey={privateKey} setPrivateKey={setPrivateKey}/>
     </div>
   );
 }
