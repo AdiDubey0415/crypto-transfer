@@ -31,7 +31,6 @@ function Transfer({ address, setBalance, privateKey, setSignature }) {
 
     // const signatureHex = toHex(utf8ToBytes(JSON.stringify(secp256k1.sign(messageHash, privateKey))));
 
-    console.log("signature", signature, serializedSignature);
 
     try {
       const {
