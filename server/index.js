@@ -46,7 +46,7 @@ app.post("/send", (req, res) => {
   const messageHash = keccak256(utf8ToBytes(JSON.stringify(message)));
 
   const publicKey = sig.recoverPublicKey(messageHash).toHex();
-  console.log("public key:", publicKey);
+  console.log("recovered public key:", publicKey);
 
   if (publicKey !== sender) {
     res.status(400).send({ message: "Invalid signature! - sender" });
